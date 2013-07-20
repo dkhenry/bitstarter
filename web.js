@@ -9,6 +9,8 @@ app.get('/', function(request, response) {
 	});
 });
 
+app.use('/static', express.static(__dirname + '/public'));
+
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
   console.log("Listening on " + port);

@@ -2,7 +2,7 @@
 <html>
   <head>
 	<meta charset="utf-8">
-	<title>My First Bitstarter</title>
+	<title>MainScreen - Simple Scalable Web Conferencing</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link type="text/css" rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css"/>
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -73,6 +73,11 @@
 	  color: white;
 	  }
 
+	  .img-polaroid { 
+	  width: 480;
+	  height: 300;
+	  }
+
 	  /* Marketing Copy and Footer */ 
 	  .copy { 
 	  padding-top: 2.5%;
@@ -102,7 +107,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="brand" href="#">Bitstarter</a>
+		  <a class="brand" href="#">MainScreen</a>
 		  <div class="nav-collapse collapse">
 			<ul class="nav">
 			  <li class="active"><a href ="#">Home</a></li>
@@ -114,37 +119,38 @@
 	  </div><!-- /.navbar-inner -->
 	</div> <!-- /.navbar -->
 
-	<div class="container-fluid">
+	<div class="container">
 	  <div class="row-fluid heading">
 		<div class="span12">
-		  <h1>Product</h1>
+		  <h1>MainScreen - Simple, Scalable Web Conferencing</h1>
 		</div>
 	  </div>
 	  <div class="row-fluid subheading">
 		<div class="span12">
-		  <p class="lead">One sentence description.</p>
+		  <p class="lead">MainScreen is a Web Conferencing solution
+		  that just works, and works the way you want it to.</p>
 		</div>
 	  </div>
 	  <div class="row-fluid pitch">
 		<div class="span5 offset1 video">
-		  <img class="img-polaroid" src="http://placehold.it/480x300">
+		  <img class="img-polaroid" src="/static/web-conference-global-online-communication.jpg">
 		</div>
 		<div class="span5 actions">
 		  <div class="span8 offset2">
 			<div class="statistics">
 			  <div class="span4">
 				<div class="linediv-l">
-				  <h3>1000</h3><p>backers</p>
+				  <h3>0</h3><p>backers</p>
 				</div>
 			  </div>
 			  <div class="span4">
 				<div class="linediv-c">
-				  <h3>$1000</h3><p>of $10,000</p>
+				  <h3>$0</h3><p>of $10,000</p>
 				</div>
 			  </div>
 			  <div class="span4">
 				<div class="linediv-r">
-				  <h3>10</h3><p>days left</p>
+				  <h3>40</h3><p>days left</p>
 				</div>
 			  </div>
 			</div><!-- statistics -->
@@ -161,11 +167,20 @@
 
 	  <div class="row-fluid section1">
 		<div class="span5 offset1 asset">
-		  <img class="img-polaroid" src="http://placehold.it/480x300">
+		  <img class="img-polaroid" src="/static/Global-Network_303.jpg">
 		</div>
 		<div class="span5 copy">
 		  <p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eros dolor, sagittis nec sapien ac, porta fermentum ipsum. Etiam augue sem, sodales sed ullamcorper tempor, pretium et odio. Nam adipiscing in nunc sit amet pharetra. Ut ultrices, est ac placerat tincidunt, turpis lorem elementum arcu, at ultricies nunc magna quis mauris. 
+			The internet is a global movement. It has removed all the
+			barriers to society integrating and working together.
+			Location is no longer a factor in who you work for or you
+			you socialize with. Instant communication has torn down
+			most of the limitations to global collaboration, except if
+			you actually want to see the person your talking to. Video
+			conferencing hasn't progressed much past one to one
+			communications or closed proprietary solutions for small.
+			Main Screen intends to break down this last barrier to true
+			collaboration at a global scale
 		  </p>
 		</div>
 	  </div> <!-- row-fluid -->
@@ -173,11 +188,17 @@
 	  <div class="row-fluid section2">
 		<div class="span5 offset1 copy copy-right">
 		  <p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eros dolor, sagittis nec sapien ac, porta fermentum ipsum. Etiam augue sem, sodales sed ullamcorper tempor, pretium et odio. Nam adipiscing in nunc sit amet pharetra. Ut ultrices, est ac placerat tincidunt, turpis lorem elementum arcu, at ultricies nunc magna quis mauris. 
+			Want one click meeting set up? So do we.
+			Want more then 10 people in a web conference? So do we.
+			Want to record your session for those who couldn't make it
+			live? So do we.
+			Want the option to host it behind a firewall? So do we.
+			Want it to work on any modern browser on any modern
+			operating system? So do we. 			
 		  </p>
 		</div>
 		<div class="span5 copy">
-		  <img class="img-polaroid" src="http://placehold.it/480x300">
+		  <img class="img-polaroid" src="/static/4g-global-network.jpg">
 		</div>
 	  </div> <!-- row-fluid -->
 
@@ -188,12 +209,12 @@
 			<div class="accordion-group">
 			  <div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-				  What does FAQ stand for?
+				  Is this some sort of WebRTC tool?
 				</a>
 			  </div>
 			  <div id="collapseOne" class="accordion-body collapse">
 				<div class="accordion-inner">
-				  Frequently Asked Questions.
+				  Yes. 
 				</div>
 			  </div>
 			</div>
@@ -201,12 +222,14 @@
 			<div class="accordion-group">
 			  <div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-				  What's a Frequently Asked Question.
+				  Doesn't WebRTC break down with more then four hosts
 				</a>
 			  </div>
 			  <div id="collapseTwo" class="accordion-body collapse">
 				<div class="accordion-inner">
-				  A question which is commonly asked by users.
+				  Normally yes, but out solution will use aggressive
+				  pooling to bring that number up to the hundreds and
+				  maybe even the thousands
 				</div>
 			  </div>
 			</div>
