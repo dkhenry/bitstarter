@@ -25,7 +25,7 @@ var server = http.createServer(app);
 var wss = new WebSocketServer({ server: server });
 
 var Mongoose = require('mongoose');
-var db = Mongoose.createConnection('localhost', 'mainscreen');
+var db = Mongoose.createConnection( process.env.MONGO_URL || 'localhost', 'mainscreen');
 
 
 var orderSchema = new Mongoose.Schema(
@@ -39,7 +39,7 @@ var orderSchema = new Mongoose.Schema(
 			type: Number,
 			required: true,
 			validate : [
-				function(v) { return v >0.0 },
+				function(v) { return v > 0.0 },
 				"Invalid amount, amount must be positive"
 			]
 		},
