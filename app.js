@@ -25,7 +25,8 @@ var server = http.createServer(app);
 var wss = new WebSocketServer({ server: server });
 
 var Mongoose = require('mongoose');
-var db = Mongoose.connect(process.env.MONGOHQ_URL || 'mongodb://localhost/mainscreen', function (err, res) {
+var uristring = process.env.MONGOHQ_URL || 'mongodb://localhost/mainscreen'
+var db = Mongoose.connect(uristring, function (err, res) {
   if (err) { 
   console.log ('ERROR connecting to: ' + uristring + '. ' + err);
   } else {
