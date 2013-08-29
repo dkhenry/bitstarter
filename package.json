@@ -1,11 +1,16 @@
 {
-  "name": "node-example",
+  "name": "mainscreen-bitstarter",
   "version": "0.0.1",
-  "dependencies": {
-    "express": "2.5.x"
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
   },
-  "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
+  "dependencies": {
+    "express": "3.2.3",
+    "jade": "*",
+    "mongodb" : ">=0.9.6-7",
+    "mongoose" : ">=3.6",
+    "async": ">=0.2.9",
+    "ws":	">=0.4.29"
   }
 }
