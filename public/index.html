@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
-<title>MainScreen - Simple Scalable Web Conferencing</title>
+<title>MainScreen - Simple Scalable Video Conferencing</title>
 
 <!-- If you are using CSS version, only link these 2 files, you may add app.css to use for your overrides if you like. -->
 <link rel="stylesheet" href="css/normalize.css" />
@@ -25,15 +25,32 @@
 body {
 	font-family: 'Crete Round', serif;
 	vertical-align: middle;
+	font-size:16px;
 }
 
 h1,h2,h3 {
 	font-family: 'Droid Serif', serif;
 }
 
+ul {
+	list-style-type: none;
+}
+
 .orbit-container .orbit-slides-container img {
 	max-width: 100%;
 	max-height:500px;
+}
+
+.splash {
+	background: url('/img/office-space-view-header.png') no-repeat;
+	background-size: cover;
+	min-height:500px;
+	vertical-align: middle;
+	padding-top: 100px;
+	margin-top:-50px;
+	position:relative;
+	top: 0;
+	font-size: 20px;	
 }
 
 img {
@@ -124,12 +141,12 @@ img {
 }
 
 .top-bar-section, .top-bar-section ul, .top-bar-section li a:not(.button), .top-bar { 
-background-color: rgb(255, 255, 255) !important;
-	
+	background-color: rgba(255, 255, 255, 0.0) !important;	
 }
 
 .top-bar {
-	margin-bottom: 0px;	
+	margin-bottom: 0px;
+	z-index: 9;	
 }
 
 img.framed {
@@ -202,12 +219,12 @@ img.framed {
 		</li>		
 	</ul>
 	-->
-	
+	<div class="splash">
 	<div class="row">
 		<div class="large-12 columns">
 			<div class="centered">
 				<h1>Main Screen</h1>
-				<h3>Simple, Secure, Scalable, Web Conferencing</h3>
+				<h3>Simple, Secure, Scalable, Video Conferencing</h3>
 			</div>
 		</div>
 	</div>
@@ -250,6 +267,7 @@ img.framed {
 				</div>
 		</div>
 	</div>
+	</div>
 	<!-- End Pitch -->
 
 	
@@ -259,7 +277,7 @@ img.framed {
 				<img class="framed" src="/img/Global-Network_303.jpg">
 			</div>
 			<div class="large-6 columns">
-				<h3>Simple Web Conferencing</h3>
+				<h3>Simple Video Conferencing</h3>
 				<p>The Internet is a global movement. It has removed all the
 					barriers to society integrating and working together. Location is
 					no longer a factor in who you work for or you you socialize with.
@@ -283,7 +301,7 @@ img.framed {
 				<h3>Quis custodiet ipsos custodes</h3>
 				<p>
 					As with any technology you need to ask what your giving 
-				    up. Up untill now Web conferencing has ment that you need to give
+				    up. Up untill now Video Conferencing has ment that you need to give
 				    whoever is running the service full knowledge of who your talking to 
 				    , how long your talking, and in some cases what your saying. Once we 
 				    believed that we had nothing to worry about, but every day we wonder just a 
@@ -379,17 +397,47 @@ img.framed {
 	<!-- Footer -->
 	<div class="blue">		
 		<footer class="row ">
-			<div class="large-12 columns">
-				<form>
-					<div class="row">
-						<div class="large-6 columns">
-							<label>Sign Up For Updates</label> <input type="text"
-								placeholder="E-mail">
+			<div class="large-4 columns">
+				<h3>Main Screen</h3>
+				<p>Like what you see ? Want to see more, sign up for updates</p>
+				<form>					
+					<div class="row">						
+						<div class="large-8 columns">
+							<input type="text" style="height:40px;" placeholder="E-mail">
+						</div>
+						<div class="large-4 columns">										
+							<a href="#" class="large button postfix" style="height:40px;">Submit</a>
 						</div>
 					</div>
-					<button type="submit">Submit</button>
 				</form>
 			</div>
+			<div class="large-4 columns">
+				<h3>Project Updates</h3>
+				<ul>
+					<li>
+						<b>Bit Coin Funding is now active !!!</b>
+						<p>If you donate you will still need a seperate method to register an
+						contact address so we can deliver your reward</p>
+					</li>
+					<li>
+						<b>Under Construction</b>
+						<p>What you see here isn't done yet. Normally this would stay 
+						hidden away in the unreachable bowls of the internet, but as this is
+						for the stanford "Startup Engineering" class it is being published
+						early
+						</p> 
+					</li>
+				</ul>
+			</div>
+			<div class="large-4	 columns">
+				<h3>Site Map</h3>
+				<ul>
+				<li><a href="#support">Support</a></li>
+				<li><a href="#info">Information</a></li>
+				<li><a href="#qustions">Questions</a></li>
+				<li><a href="#contact">Contact</a></li>
+				</ul>
+			</div>			
 		</footer>
 		<!-- End Footer -->
 
