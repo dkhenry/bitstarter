@@ -2,16 +2,16 @@
  * Module dependencies.
  */
 
+var port = process.env.PORT || 3000;
 var express = require('express')
 , http = require('http')
 , https = require('https')
 , async = require('async')
-, path = require('path')
-, WebSocketServer = require('ws').Server;
+, path = require('path');
 
 var app = express();
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', port);
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -21,11 +21,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var server = http.createServer(app);
 // Include the WebSockets
-
-var wss = new WebSocketServer({ server: server });
+var io = require('socket.io').listen(server);
 
 var Mongoose = require('mongoose');
-var uristring = process.env.MONGOHQ_URL || 'mongodb://localhost/mainscreen'
+var uristring = process.env.MONGOHQ_URL || 'mongodb://localhost/mainscreen';
 var db = Mongoose.connect(uristring, function (err, res) {
   if (err) { 
   console.log ('ERROR connecting to: ' + uristring + '. ' + err);
@@ -37,7 +36,7 @@ var db = Mongoose.connect(uristring, function (err, res) {
 var orderSchema = new Mongoose.Schema(
 	{ 
 		coinbase_id: { 
-	  		type: String,
+			type: String,
 			required: true,
 			unique: true
 		},
@@ -45,18 +44,41 @@ var orderSchema = new Mongoose.Schema(
 			type: Number,
 			required: true,
 			validate : [
-				function(v) { return v > 0.0 },
+				function(v) { return v > 0.0; },
 				"Invalid amount, amount must be positive"
 			]
 		},
 		time : {
 			type: Date,
-		default: Date.now,
+			default: Date.now,
 			required: true
 		}
 	});
 
 var Orders = Mongoose.model("Orders",orderSchema);
+
+var emailSchema = new Mongoose.Schema(
+		{
+			address: {
+				type: String,
+				required: true,
+				unique: true
+			}
+		}
+);
+
+var Email = Mongoose.model("Email",emailSchema);
+
+
+app.get("/email", function(request,response) {
+	console.log("A user has requested we keep them updated");
+	var email = new Email({
+		address: request.body.email
+	});
+	email.save();
+	response.json({"success":true, "message": "Added " + request.body.email + "to contacts list"});
+});
+
 
 app.get('/refresh_orders', function(request, response) {
 	console.log(process.env.COINBASE_API_KEY);
@@ -65,7 +87,7 @@ app.get('/refresh_orders', function(request, response) {
 		res.on('data', function(chunk) {body += chunk;});
 		res.on('end', function() {
 			try {
-				console.log("--- Got Back Orders")
+				console.log("--- Got Back Orders");
 				var orders_json = JSON.parse(body);
 				if (orders_json.error) {
 					response.send(orders_json.error);
@@ -108,7 +130,7 @@ var listOrders = function() {
 		});
     });
 	return order;
-}
+};
 
 var addOrder = function(order_obj, callback) {
 	console.log("--- Adding Order");
@@ -125,17 +147,24 @@ var addOrder = function(order_obj, callback) {
 		order.save();  
 	}  
 };
-
-wss.on('connection', function(ws) {
-  var id = setInterval(function() {
-    ws.send(JSON.stringify(process.memoryUsage()), function() { /* ignore errors */ });
-  }, 10000);
-  console.log('started client interval');
-  ws.on('close', function() {
-    console.log('stopping client interval');
-    clearInterval(id);
-  });
+//assuming io is the Socket.IO server object
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
 });
+
+var clients = 0;
+io.sockets.on('connection', function (socket) {
+	clients++;
+	var id = setInterval(function() {
+		socket.emit('heartbeat', {clients: clients});
+	}, 10000);	  
+	socket.on('my other event', function (data) {
+	    console.log(data);
+	});
+	console.log("Started New client Session");
+});
+io.sockets.on('disconnect', function () { clients= clients -1;});
 
 server.listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
