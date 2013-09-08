@@ -394,11 +394,11 @@ img.framed {
 					<form>
 						<div class="row">
 							<div class="large-8 columns">
-								<input type="text" style="height: 40px;" placeholder="E-mail">
+								<input type="text" style="height: 40px;" placeholder="E-mail" ng-model="email">
 							</div>
 							<div class="large-4 columns">
-								<a href="#" class="large button postfix" style="height: 40px;"
-									ng-action=submit>Submit</a>
+								<button class="large button postfix" style="height: 40px;"
+									ng-click="submitEmail();">Submit</button>
 							</div>
 						</div>
 					</form>
@@ -476,6 +476,15 @@ img.framed {
 		
 	</script>
 	<script src="/js/interface.js"></script>
+	
+	
+	<!-- The Modals -->
+	
+	<div id="emailModal" class="reveal-modal">
+  		<h2>Email registerd Successfully.</h2>
+  		<p class="lead">We will be in contact as we get this project off the ground</p>  
+  		<a class="close-reveal-modal">&#215;</a>
+	</div>
 </body>
 </div>
 </html>

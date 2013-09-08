@@ -70,7 +70,7 @@ var emailSchema = new Mongoose.Schema(
 var Email = Mongoose.model("Email",emailSchema);
 
 
-app.get("/email", function(request,response) {
+app.post("/email", function(request,response) {
 	console.log("A user has requested we keep them updated");
 	var email = new Email({
 		address: request.body.email
