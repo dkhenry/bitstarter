@@ -55,7 +55,7 @@ var orderSchema = new Mongoose.Schema(
 		}
 	});
 
-var Orders = Mongoose.model("Orders",orderSchema);
+var Order = Mongoose.model("Orders",orderSchema);
 
 var emailSchema = new Mongoose.Schema(
 		{
